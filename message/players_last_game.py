@@ -1,14 +1,17 @@
 import message.brscraper.brscraper as brscraper
 
-def batter_last_game():
+def batter_last_game(lahmanId, name):
 
     scraper = brscraper.BRScraper()
     #This is the url that will be used
     #data = scraper.parse_tables("/players/gl.fcgi?id=poseybu01&t=b&year=2020")
-    data = scraper.parse_tables("/players/gl.fcgi?id=poseybu01&t=b&year=2019")
 
+    #Finds the url based on the lahmanId
+    url = "/players/gl.fcgi?id=" + lahmanId + "&t=b&year=2019"
+    data = scraper.parse_tables(url)
 
-    message = "On " + data["batting_gamelogs"][(len(data["batting_gamelogs"]) - 1)]["Date"] + " Buster Posey went " +  data["batting_gamelogs"][(len(data["batting_gamelogs"]) - 1)]["H"] + " for " + data["batting_gamelogs"][(len(data["batting_gamelogs"]) - 1)]["AB"] + " last night against " + data["batting_gamelogs"][(len(data["batting_gamelogs"]) - 1)]["Opp"]  +" with"
+    #The message now uses the name passed to the function
+    message = "On " + data["batting_gamelogs"][(len(data["batting_gamelogs"]) - 1)]["Date"] + " " + name + " went " +  data["batting_gamelogs"][(len(data["batting_gamelogs"]) - 1)]["H"] + " for " + data["batting_gamelogs"][(len(data["batting_gamelogs"]) - 1)]["AB"] + " last night against " + data["batting_gamelogs"][(len(data["batting_gamelogs"]) - 1)]["Opp"]  +" with"
 
     if (((int(data["batting_gamelogs"][(len(data["batting_gamelogs"]) - 1)]["HR"]))) > 0):
         message += ", "
