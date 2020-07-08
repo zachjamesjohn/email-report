@@ -9,6 +9,7 @@ YourFile.YourFunction()
 """
 import message.countdowns as countdowns		#DEMO
 import message.game_scores as game_scores	#DEMO
+import message.players_last_game as players_last_game
 #from
 
 def create_text_body():
@@ -21,7 +22,10 @@ def create_text_body():
 		substitute in your custom report functions here! """
 	day_of_the_year = countdowns.day_of_year()	#DEMO
 	day_of_my_life = countdowns.time_alive()	#DEMO
+	giants_game = game_scores.get_team_result_text('San Francisco Giants')
 	jays_game = game_scores.get_team_result_text('Toronto Blue Jays')	#DEMO
+	tigers_game = game_scores.get_team_result_text('Detroit Tigers')
+	buster_posey = players_last_game.batter_last_game()
 
 
 	""" this section adds the strings to the message body
@@ -31,12 +35,13 @@ def create_text_body():
 	body_string += day_of_my_life					#DEMO
 	body_string += '\n\n' #to add some separation	#DEMO
 
+	body_string += giants_game
+	body_string += '\n\n' #to add some separation
+	body_string += tigers_game
+	body_string += '\n\n' #to add some separation
 	body_string += jays_game						#DEMO
 	body_string += '\n\n' #to add some separation	#DEMO
-	
+
+	body_string += buster_posey
 
 	return body_string #return the string to email_me.py it is then written into the email
-
-
-
-
