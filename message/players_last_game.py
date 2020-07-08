@@ -3,6 +3,8 @@ import message.brscraper.brscraper as brscraper
 def batter_last_game():
 
     scraper = brscraper.BRScraper()
+    #This is the url that will be used
+    #data = scraper.parse_tables("/players/gl.fcgi?id=poseybu01&t=b&year=2020")
     data = scraper.parse_tables("/players/gl.fcgi?id=poseybu01&t=b&year=2019")
 
 
